@@ -414,8 +414,7 @@ function endPhase(){
     showMessage('練習は終了です', '続いて本番のゲームを行います。準備ができたら「続ける」を押してください。',
       () => startPhase('main', cfg.nTrials));
   } else {
-    // 本番終了後はアンケートを挟まず、データ送信後に終了メッセージを表示
-    finish();
+    show('s-questionnaire');
   }
 }
 
@@ -514,7 +513,7 @@ function collectCheck(){
 let DATA = null;
 const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyK81UdWtSQN5NiocpAp1yQF2UMcXBkpBDjOqfaDZzOWDdUAVeaJ6xzs6IURKpYbpaRQw/exec';
 
-function finish(){
+function finish(freeText=''){
   const summary = summarize();
   DATA = {
     meta: {
@@ -536,6 +535,7 @@ function finish(){
     },
     summary: summary,
     manipulation_check: null,
+    free_text: freeText,
     log: log
   };
   
@@ -549,6 +549,7 @@ function finish(){
     participant_id: DATA.meta.participant_id,
     n_throws_participant: DATA.summary.n_throws_participant,
     n_to_B: DATA.summary.n_to_B
+    free_text: freeText
   })
 }).catch(error => {
   console.error('Google Sheets送信エラー:', error);
@@ -694,6 +695,10 @@ $('btn-instr-next').onclick = () => {
   } else {
     startPhase('main', cfg.nTrials);
   }
+};
+$('btn-questionnaire-next').onclick = () => {
+  const freeText = $('q-free').value.trim();
+  finish(freeText);
 };
 $('btn-csv-log').onclick = csvLog;
 $('btn-csv-sum').onclick = csvSummary;
