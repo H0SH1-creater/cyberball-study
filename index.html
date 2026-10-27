@@ -548,7 +548,7 @@ function finish(freeText=''){
   body: JSON.stringify({
     participant_id: DATA.meta.participant_id,
     n_throws_participant: DATA.summary.n_throws_participant,
-    n_to_B: DATA.summary.n_to_B
+    n_to_B: DATA.summary.n_to_B,
     free_text: freeText
   })
 }).catch(error => {
