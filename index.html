@@ -693,7 +693,7 @@ function begin(isDemo){
 $('btn-start').onclick = () => begin(false);
 $('btn-instr-next').onclick = () => {
   if (cfg.nPractice > 0){
-    showMessage('まず練習をします', '実際のゲームの前に、短い練習を行います。準備ができたら「続ける」を押してください。',
+    showMessage('まず練習をします。', '実際のゲームの前に、短い練習を行います。準備ができたら「続ける」を押してください。',
       () => startPhase('practice', cfg.nPractice));
   } else {
     startPhase('main', cfg.nTrials);
