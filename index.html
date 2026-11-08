@@ -373,7 +373,7 @@ function nextStep(){
     if (demoMode) later(() => { if (busy) return; doThrow('C', rng() < 0.5 ? 'A' : 'B'); }, 400);
   } else {
     setClickable(false);
-    setPrompt(nameOf(holder) + ' が考えています…', false);
+    setPrompt(nameOf(holder) + ' の番です。', false);
     const wait = cfg.holdMin + rng() * Math.max(0, cfg.holdMax - cfg.holdMin);
     later(() => doThrow(holder, npcChoose(holder)), wait);
   }
