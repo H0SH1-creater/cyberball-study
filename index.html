@@ -414,7 +414,7 @@ function endPhase(){
   setClickable(false);
   setPrompt('', false);
   if (phase === 'practice'){
-    showMessage('練習は終了です', '続いて本番のゲームを行います。準備ができたら「続ける」を押してください。',
+    showMessage('練習は終了です。', '続いて本番のゲームを行います。準備ができたら「続ける」を押してください。',
       () => startPhase('main', cfg.nTrials));
   } else {
     show('s-questionnaire');
