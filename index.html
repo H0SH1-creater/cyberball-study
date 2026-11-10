@@ -75,7 +75,12 @@
   }
   .player.holding{border-color:var(--ball);background:rgba(242,193,78,.07)}
   .player.clickable{cursor:pointer}
-  .player.clickable:hover{background:transparent;border-color:inherit}
+  .player.clickable:hover{
+  background:transparent;
+  border-color:transparent;
+  box-shadow:none;
+  outline:none;
+}
   .avatar{
     width:62px;height:62px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
